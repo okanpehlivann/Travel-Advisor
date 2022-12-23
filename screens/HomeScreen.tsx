@@ -10,7 +10,7 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   const goToDiscover = (): void => {
-    // navigation.navigate("Discover");
+    navigation.navigate("Discover");
   };
 
   return (
