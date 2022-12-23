@@ -13,7 +13,6 @@ import GoogleMapSearch from "../components/GoogleMapSearch";
 import { getRestaurants } from "../services/service";
 import MenuContainer from "../components/MenuContainer";
 import { MaterialIcons } from "@expo/vector-icons";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import ItemCardContainer from "../components/ItemCardContainer";
 
 const Discover = () => {
