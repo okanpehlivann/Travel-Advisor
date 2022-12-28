@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GOOGLE_MAP_KEY } from "@env";
 
 export type TGoogleMapSearch = {
   selectCountry: () => void;
@@ -15,7 +16,7 @@ const GoogleMapSearch = ({ selectCountry }: TGoogleMapSearch) => {
         fetchDetails={true}
         onPress={selectCountry}
         query={{
-          key: "AIzaSyBn6-YIqaDsiLlV5n8rM0-pOez3KFuNaFY",
+          key: `${GOOGLE_MAP_KEY}`,
           language: "en",
         }}
       />
