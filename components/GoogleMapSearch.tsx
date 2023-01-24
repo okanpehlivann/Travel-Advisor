@@ -1,10 +1,13 @@
 import { View } from "react-native";
 import React from "react";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import {
+  GooglePlaceData,
+  GooglePlacesAutocomplete,
+} from "react-native-google-places-autocomplete";
 import { GOOGLE_MAP_KEY } from "@env";
 
 export type TGoogleMapSearch = {
-  selectCountry: () => void;
+  selectCountry: (data: GooglePlaceData, details: any) => void;
 };
 
 const GoogleMapSearch = ({ selectCountry }: TGoogleMapSearch) => {
@@ -14,7 +17,9 @@ const GoogleMapSearch = ({ selectCountry }: TGoogleMapSearch) => {
         GooglePlacesDetailsQuery={{ fields: "geometry" }}
         placeholder="Search"
         fetchDetails={true}
-        onPress={selectCountry}
+        onPress={(data: GooglePlaceData, details = null) =>
+          selectCountry(data, details)
+        }
         query={{
           key: `${GOOGLE_MAP_KEY}`,
           language: "en",
