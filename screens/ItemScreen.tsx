@@ -71,7 +71,7 @@ const ItemScreen = ({ route }: any) => {
         </View>
 
         <View className="mt-4 flex-row items-center justify-between">
-          {data?.rating && (
+          {data?.rating ? (
             <View className=" flex-row items-center space-x-2">
               <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
                 <FontAwesome name="star" size={24} color="#D58574" />
@@ -81,9 +81,11 @@ const ItemScreen = ({ route }: any) => {
                 <Text className="text-[#515151]">Ratings</Text>
               </View>
             </View>
+          ) : (
+            <></>
           )}
 
-          {data?.price_level && (
+          {data?.price_level ? (
             <View className=" flex-row items-center space-x-2">
               <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
                 <FontAwesome name="dollar" size={24} color="black" />
@@ -93,9 +95,11 @@ const ItemScreen = ({ route }: any) => {
                 <Text className="text-[#515151]">Price Level</Text>
               </View>
             </View>
+          ) : (
+            <></>
           )}
 
-          {data?.bearing && (
+          {data?.bearing ? (
             <View className=" flex-row items-center space-x-2">
               <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
                 <FontAwesome name="map-signs" size={24} color="black" />
@@ -107,16 +111,20 @@ const ItemScreen = ({ route }: any) => {
                 <Text className="text-[#515151]">Bearing</Text>
               </View>
             </View>
+          ) : (
+            <></>
           )}
         </View>
 
-        {data?.description && (
+        {data?.description ? (
           <Text className="mt-4 tracking-wide text-[16px] font-semibold text-[#97A6AF]">
             {data?.description}
           </Text>
+        ) : (
+          <></>
         )}
 
-        {data?.cuisine && (
+        {data?.cuisine ? (
           <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4">
             {data?.cuisine.map((n: any) => (
               <TouchableOpacity
@@ -127,26 +135,35 @@ const ItemScreen = ({ route }: any) => {
               </TouchableOpacity>
             ))}
           </View>
+        ) : (
+          <></>
         )}
 
         <View className=" space-y-2 mt-4 bg-gray-100 rounded-2xl px-4 py-2">
-          {data?.phone && (
+          {data?.phone ? (
             <View className="items-center flex-row space-x-6">
               <FontAwesome name="phone" size={24} color="#428288" />
               <Text className="text-lg">{data?.phone}</Text>
             </View>
+          ) : (
+            <></>
           )}
-          {data?.email && (
+
+          {data?.email ? (
             <View className="items-center flex-row space-x-6">
               <FontAwesome name="envelope" size={24} color="#428288" />
               <Text className="text-lg">{data?.email}</Text>
             </View>
+          ) : (
+            <></>
           )}
-          {data?.address && (
+          {data?.address ? (
             <View className="items-center flex-row space-x-6">
               <FontAwesome name="map-pin" size={24} color="#428288" />
               <Text className="text-lg">{data?.address}</Text>
             </View>
+          ) : (
+            <></>
           )}
 
           <View className="mt-4 px-4 py-4 rounded-lg bg-[#06B2BE] items-center justify-center mb-12">

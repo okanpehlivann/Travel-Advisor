@@ -6,6 +6,7 @@ export type TGetRestaurantReq = {
   tr_latitude: string;
   bl_longitude: string;
   tr_longitude: string;
+  type: string;
 };
 
 export const getPlacesData = async ({
@@ -13,7 +14,10 @@ export const getPlacesData = async ({
   tr_latitude,
   bl_longitude,
   tr_longitude,
+  type,
 }: TGetRestaurantReq) => {
+  console.log("TYPE => ", type);
+
   try {
     const {
       data: { data },

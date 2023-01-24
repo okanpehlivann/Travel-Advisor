@@ -8,11 +8,9 @@ import {
   Image,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import DiscoverHeader from "../components/DiscoverHeader";
 import { Attractions, Avatar, Hotels, NotFound, Restaurants } from "../assets";
 import GoogleMapSearch from "../components/GoogleMapSearch";
-import { getRestaurants } from "../services/service";
 import MenuContainer from "../components/MenuContainer";
 import { MaterialIcons } from "@expo/vector-icons";
 import ItemCardContainer from "../components/ItemCardContainer";
@@ -29,8 +27,6 @@ const Discover = () => {
   const [mainData, setMainData] = useState([]);
   const [type, setType] = useState("restaurants");
 
-  const navigation = useNavigation();
-
   useEffect(() => {
     setIsLoading(true);
 
@@ -39,10 +35,11 @@ const Discover = () => {
       tr_latitude: tr_lat,
       bl_longitude: bl_lng,
       tr_longitude: tr_lng,
+      type: type,
     };
 
-    getRestaurants(requestObj);
-  }, [bl_lat, bl_lng, tr_lat, tr_lng]);
+    getPlaces(requestObj);
+  }, [bl_lat, bl_lng, tr_lat, tr_lng, type]);
 
   const selectCountry = (googlePlaceData: GooglePlaceData, details: any) => {
     const viewPort = details?.geometry?.viewport;
@@ -53,7 +50,7 @@ const Discover = () => {
     setTr_lng(viewPort?.northeast?.lng);
   };
 
-  const getRestaurants = (placesReq: TGetRestaurantReq) => {
+  const getPlaces = (placesReq: TGetRestaurantReq) => {
     getPlacesData(placesReq).then((data) => {
       setMainData(data);
       setInterval(() => {
@@ -76,7 +73,7 @@ const Discover = () => {
         <ScrollView>
           <View className="flex-row items-center justify-between px-8 mt-8">
             <MenuContainer
-              key={"hotel"}
+              key={"hotels"}
               title="Hotels"
               imageSrc={Hotels}
               type={type}
